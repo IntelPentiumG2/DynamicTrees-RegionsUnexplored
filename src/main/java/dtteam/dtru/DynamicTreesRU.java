@@ -8,6 +8,7 @@ import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.treepack.Resources;
 import dtteam.dtru.data.DTRUDataGenerators;
+import dtteam.dtru.data.DTRULoaderBuilders;
 import dtteam.dtru.init.DTRUPlusRegistries;
 import dtteam.dtru.init.DTRURegistries;
 import net.minecraft.resources.Identifier;
@@ -44,7 +45,6 @@ public class DynamicTreesRU {
 
         NeoForgeRegistryHandler.setup(MOD_ID, bus);
         DTRURegistries.setup();
-        DTRUDataGenerators.register();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -54,6 +54,12 @@ public class DynamicTreesRU {
     }
 
     private void gatherClientData(final GatherDataEvent.Client event) {
+        // Both of these name client-only data generation types, so they stay out of the mod
+        // constructor: the JVM verifies a whole class when it links it, which would drag those types
+        // onto a dedicated server.
+        DTRUDataGenerators.register();
+        DTRULoaderBuilders.register();
+
         // Dynamic Trees only fires its own data gathering for the mods named by --mod, so the tree
         // pack has to be loaded here for an add-on's run to see any of its own trees.
         Resources.MANAGER.gatherData();
