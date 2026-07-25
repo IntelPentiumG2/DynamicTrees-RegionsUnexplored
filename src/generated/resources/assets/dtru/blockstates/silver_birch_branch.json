@@ -1,10 +1,20 @@
 {
   "variants": {
     "transition=false": {
-      "model": "dtru:block/silver_birch_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:silver_birch",
+      "textures": {
+        "bark": "regions_unexplored:block/silver_birch_log",
+        "rings": "minecraft:block/birch_log_top"
+      }
     },
     "transition=true": {
-      "model": "dtru:block/silver_birch_branch_base"
+      "type": "dynamictrees:branch",
+      "family": "dtru:silver_birch",
+      "textures": {
+        "bark": "regions_unexplored:block/silver_birch_log_base",
+        "rings": "minecraft:block/birch_log_top"
+      }
     }
   }
 }

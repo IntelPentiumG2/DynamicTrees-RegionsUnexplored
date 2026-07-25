@@ -10,7 +10,7 @@ import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.Level;
 
 public class DiagonalPalmLogic extends PalmGrowthLogic {
@@ -19,7 +19,7 @@ public class DiagonalPalmLogic extends PalmGrowthLogic {
     public static final ConfigurationProperty<Float> CHANCE_TO_SPLIT = ConfigurationProperty.floatProperty("chance_to_split");
     public static final ConfigurationProperty<Float> SPLIT_MAX_ENERGY_FACTOR = ConfigurationProperty.floatProperty("split_max_energy_factor");
 
-    public DiagonalPalmLogic(ResourceLocation registryName) {
+    public DiagonalPalmLogic(Identifier registryName) {
         super(registryName);
     }
 

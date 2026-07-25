@@ -1,7 +1,11 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/eucalyptus_root"
+      "type": "dtru:eucalyptus_surface_root",
+      "textures": {
+        "bark": "regions_unexplored:block/eucalyptus_log",
+        "overlay": "regions_unexplored:block/eucalyptus_log_overlay"
+      }
     }
   }
 }

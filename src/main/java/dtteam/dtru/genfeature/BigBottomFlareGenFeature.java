@@ -12,14 +12,14 @@ import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nonnull;
 
 public class BigBottomFlareGenFeature extends BottomFlareGenFeature {
 
-    public BigBottomFlareGenFeature(ResourceLocation registryName) {
+    public BigBottomFlareGenFeature(Identifier registryName) {
         super(registryName);
     }
 

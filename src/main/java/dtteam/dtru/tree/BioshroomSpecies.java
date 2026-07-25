@@ -9,14 +9,14 @@ import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictreesplus.block.mushroom.CapProperties;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BioshroomSpecies extends HugeMushroomSpecies {
     public static final TypedRegistry.EntryType<Species> TYPE = createDefaultMushroomType(BioshroomSpecies::new);
 
-    public BioshroomSpecies(ResourceLocation name, Family family, CapProperties capProperties) {
+    public BioshroomSpecies(Identifier name, Family family, CapProperties capProperties) {
         super(name, family, capProperties);
     }
 
@@ -28,7 +28,7 @@ public class BioshroomSpecies extends HugeMushroomSpecies {
     @Override
     public Species generateSapling() {
         return !this.shouldGenerateSapling() || this.saplingBlock != null ? this :
-                this.setSapling(NeoForgeRegistryHandler.addBlock(this.getSaplingRegName(), () -> new DynamicSaplingBlock(this){
+                this.setSapling(NeoForgeRegistryHandler.addBlock(this.getSaplingRegName(), () -> new DynamicSaplingBlock(this.getSaplingRegName(), this){
                     @Override
                     public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
                         return 10;

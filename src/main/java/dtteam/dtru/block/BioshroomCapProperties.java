@@ -2,7 +2,7 @@ package dtteam.dtru.block;
 
 import com.dtteam.dynamictrees.api.registry.TypedRegistry;
 import com.dtteam.dynamictreesplus.block.mushroom.CapProperties;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -10,7 +10,7 @@ import net.minecraft.world.level.material.MapColor;
 public class BioshroomCapProperties extends CapProperties {
     public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(BioshroomCapProperties::new);
 
-    public BioshroomCapProperties(ResourceLocation registryName) {
+    public BioshroomCapProperties(Identifier registryName) {
         super(registryName);
     }
 

@@ -1,5 +1,6 @@
 {
   "values": [
+    "dtru:enchanted_birch_seed",
     "dtru:bamboo_seed",
     "dtru:baobab_seed",
     "dtru:big_apple_oak_seed",
@@ -8,7 +9,6 @@
     "dtru:brimwood_seed",
     "dtru:cobalt_seed",
     "dtru:cypress_seed",
-    "dtru:enchanted_birch_seed",
     "dtru:eucalyptus_seed",
     "dtru:golden_larch_seed",
     "dtru:joshua_seed",
@@ -25,8 +25,8 @@
     "dtru:palm_seed",
     "dtru:pine_seed",
     "dtru:pink_magnolia_seed",
-    "dtru:redwood_seed",
     "dtru:red_maple_seed",
+    "dtru:redwood_seed",
     "dtru:silver_birch_seed",
     "dtru:socotra_seed",
     "dtru:white_magnolia_seed",

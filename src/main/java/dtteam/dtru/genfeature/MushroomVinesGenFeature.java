@@ -21,7 +21,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.dtteam.dynamictreesplus.systems.mushroomlogic.context.MushroomCapContext;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -40,7 +40,7 @@ public class MushroomVinesGenFeature extends GenFeature {
 	public static final ConfigurationProperty<Block> BLOCK = ConfigurationProperty.block("block");
 	public static final ConfigurationProperty<Block> TIP_BLOCK = ConfigurationProperty.block("tip_block");
 
-	public MushroomVinesGenFeature(ResourceLocation registryName) {
+	public MushroomVinesGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 

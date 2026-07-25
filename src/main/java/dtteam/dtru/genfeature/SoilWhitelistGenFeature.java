@@ -16,7 +16,7 @@ import com.dtteam.dynamictrees.systems.genfeature.context.FullGenerationContext;
 import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.worldgen.DynamicTreeGenerationContext;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class SoilWhitelistGenFeature extends GenFeature {
 
@@ -24,7 +24,7 @@ public class SoilWhitelistGenFeature extends GenFeature {
     public static final ConfigurationProperty<Float> REPLACEMENT_CHANCE = ConfigurationProperty.floatProperty("replacement_chance");
     public static final ConfigurationProperty<Boolean> BLACKLIST = ConfigurationProperty.bool("use_blacklist");
     public static final ConfigurationProperty<String> ALLOWED_SOIL = ConfigurationProperty.string("allowed_soil");
-    public SoilWhitelistGenFeature(ResourceLocation registryName) {
+    public SoilWhitelistGenFeature(Identifier registryName) {
         super(registryName);
     }
 

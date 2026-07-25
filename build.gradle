@@ -3,47 +3,47 @@ import me.modmuss50.mpp.ReleaseType
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.99'
+    id 'net.neoforged.moddev' version '2.0.142'
     id 'idea'
-    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
-//tasks.named('wrapper', Wrapper).configure {
-//    // Define wrapper values here so as to not have to always do so when updating gradlew.properties.
-//    // Switching this to Wrapper.DistributionType.ALL will download the full gradle sources that comes with
-//    // documentation attached on cursor hover of gradle classes and methods. However, this comes with increased
-//    // file size for Gradle. If you do switch this to ALL, run the Gradle wrapper task twice afterwards.
-//    // (Verify by checking gradle/wrapper/gradle-wrapper.properties to see if distributionUrl now points to `-all`)
-//    distributionType = Wrapper.DistributionType.BIN
-//}
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
 
 version = mod_version
 group = mod_group_id
 
 repositories {
-    maven {
-        url "https://cursemaven.com"
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
     maven {
         url 'https://harleyoconnor.com/maven'
     }
+    // Dynamic Trees and Dynamic Trees Plus are built locally for 26.1; see gradle.properties.
+    mavenLocal()
 }
 
 base {
     archivesName = mod_id
 }
 
-// Mojang ships Java 21 to end users in 1.21.1, so mods should target Java 21.
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+// Mojang ships Java 25 to end users in 26.1, so mods should target Java 25.
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
-
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     // This line is optional. Access Transformers are automatically detected
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
@@ -72,17 +72,13 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
-            data()
-
-            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
-            // gameDirectory = project.file('run-data')
+        clientData {
+            clientData()
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(),
-                    '--existing', file('src/main/resources').getAbsolutePath(),
-                    "--existing-mod", "dynamictrees",
-                    "--existing-mod", "regions_unexplored"
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources').getAbsolutePath()
         }
 
         // applies to all the run configs above
@@ -111,32 +107,37 @@ configurations {
 }
 
 dependencies {
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
-    implementation "com.dtteam.dynamictrees:dynamictrees-neoforge-$minecraft_version:$dynamic_trees_version"
-    implementation "com.dtteam.dynamictreesplus:DynamicTreesPlus:$dynamic_trees_plus_version"
-//    implementation "curse.maven:dynamictrees-252818:7206627"
-//    implementation "curse.maven:dynamictreesplus-478155:7205442"
-    implementation "curse.maven:regions-unexplored-659110:7737325"
-    implementation "curse.maven:terrablender-neoforge-940057:6054947"
-    implementation "curse.maven:lithostitched-936015:7731887"
-    implementation "curse.maven:biolith-852512:7074761"
+    // Non-transitive: both mods' published metadata lists the CurseForge mods they use for their
+    // own dev runs, which this add-on neither needs nor has a repository for.
+    implementation("com.dtteam.dynamictrees:dynamictrees-neoforge-${minecraft_version}:${dynamic_trees_version}") {
+        transitive = false
+    }
+    implementation("com.dtteam.dynamictreesplus:dynamictreesplus-neoforge-${minecraft_version}:${dynamic_trees_plus_version}") {
+        transitive = false
+    }
+    implementation "maven.modrinth:regions-unexplored:${regions_unexplored_version_id}"
+    runtimeOnly "maven.modrinth:lithostitched:${lithostitched_version_id}"
+}
 
-    implementation "curse.maven:jade-324717:6853386"
+// Hand-written resources take precedence over generated ones; see the note in DynamicTreesRU.
+tasks.withType(AbstractCopyTask).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
-            minecraft_version      : minecraft_version,
-            minecraft_version_range: minecraft_version_range,
-            neo_version            : neo_version,
-            loader_version_range   : loader_version_range,
-            mod_id                 : mod_id,
-            mod_name               : mod_name,
-            mod_license            : mod_license,
-            mod_version            : mod_version,
-            mod_authors            : mod_authors,
-            mod_credits            : mod_credits,
-            mod_description        : mod_description
+            minecraft_version         : minecraft_version,
+            minecraft_version_range   : minecraft_version_range,
+            neo_version               : neo_version,
+            loader_version_range      : loader_version_range,
+            mod_id                    : mod_id,
+            mod_name                  : mod_name,
+            mod_license               : mod_license,
+            mod_version               : mod_version,
+            mod_authors               : mod_authors,
+            mod_credits               : mod_credits,
+            mod_description           : mod_description,
+            regions_unexplored_version: regions_unexplored_version
     ]
     inputs.properties replaceProperties
     expand replaceProperties
@@ -173,16 +174,16 @@ publishMods {
     curseforge {
         projectId = "1157051"
         projectSlug = "dynamic-trees-regions-unexplored" // Required for discord webhook
-        accessToken = curseApiKey ?: System.getenv("CURSEFORGE_API_KEY")
-        minecraftVersions.add("1.21.1")
+        accessToken = project.findProperty("curseApiKey") ?: System.getenv("CURSEFORGE_API_KEY")
+        minecraftVersions.add(minecraft_version)
         requires("dynamictrees")
         requires("regions-unexplored")
         optional("dynamictreesplus")
     }
     modrinth {
         projectId = "IOcN8dvy"
-        accessToken = modrinthToken ?: System.getenv("MODRINTH_TOKEN")
-        minecraftVersions.add("1.21.1")
+        accessToken = project.findProperty("modrinthToken") ?: System.getenv("MODRINTH_TOKEN")
+        minecraftVersions.add(minecraft_version)
         requires("vdjF5PL5") //dt
         requires("Tkikq67H") //ru
         optional("qaO9Dqpu") //dt+

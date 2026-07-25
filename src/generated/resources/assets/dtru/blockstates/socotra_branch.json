@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/socotra_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:socotra",
+      "textures": {
+        "bark": "regions_unexplored:block/socotra_log",
+        "rings": "regions_unexplored:block/socotra_log_top"
+      }
     }
   }
 }

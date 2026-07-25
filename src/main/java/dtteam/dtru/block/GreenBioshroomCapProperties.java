@@ -16,7 +16,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.dtteam.dynamictreesplus.systems.mushroomlogic.MushroomCapDisc;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,14 +29,14 @@ public class GreenBioshroomCapProperties extends BioshroomCapProperties {
 
     public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(GreenBioshroomCapProperties::new);
 
-    public GreenBioshroomCapProperties(ResourceLocation registryName) {
+    public GreenBioshroomCapProperties(Identifier registryName) {
         super(registryName);
     }
 
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
 
-        return new DynamicCapCenterBlock(this, properties){
+        return new DynamicCapCenterBlock(this.getCenterBlockRegistryName(), this, properties){
 
             @Override
             public List<BlockPos> getRing(LevelAccessor level, BlockPos pos, int radius) {
@@ -82,7 +82,7 @@ public class GreenBioshroomCapProperties extends BioshroomCapProperties {
                 boolean[] dirs = new boolean[]{false, !topIsCap, true, true, true, true};
                 if (yMoved || age == 1) {
                     for(Direction dir : Direction.Plane.HORIZONTAL) {
-                        float dot = (float)(dir.getNormal().getX() * centerDirection.x + dir.getNormal().getZ() * centerDirection.z);
+                        float dot = (float)(dir.getUnitVec3i().getX() * centerDirection.x + dir.getUnitVec3i().getZ() * centerDirection.z);
                         if (dot >= 0.0F) {
                             dirs[negativeFactor ? dir.getOpposite().ordinal() : dir.ordinal()] = false;
                         }

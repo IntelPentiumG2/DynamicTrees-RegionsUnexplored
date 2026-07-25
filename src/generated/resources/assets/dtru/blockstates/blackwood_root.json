@@ -1,7 +1,10 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/blackwood_root"
+      "type": "dynamictrees:surface_root",
+      "textures": {
+        "bark": "regions_unexplored:block/blackwood_log"
+      }
     }
   }
 }

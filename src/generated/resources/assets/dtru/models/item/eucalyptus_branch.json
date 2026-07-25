@@ -2,6 +2,7 @@
   "parent": "dynamictrees:item/branch",
   "textures": {
     "bark": "regions_unexplored:block/eucalyptus_log",
+    "overlay": "regions_unexplored:block/eucalyptus_log_overlay",
     "rings": "regions_unexplored:block/eucalyptus_log_top"
   }
 }

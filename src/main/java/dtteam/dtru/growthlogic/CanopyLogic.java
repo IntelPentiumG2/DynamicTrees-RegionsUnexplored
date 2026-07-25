@@ -6,7 +6,7 @@ import com.dtteam.dynamictrees.systems.growthlogic.GrowthLogicKitConfiguration;
 import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulationContext;
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class CanopyLogic extends VariateHeightLogic {
 
@@ -14,7 +14,7 @@ public class CanopyLogic extends VariateHeightLogic {
     public static final ConfigurationProperty<Integer> BRANCHING_HEIGHT = ConfigurationProperty.integer("branching_height");
     public static final ConfigurationProperty<Integer> ZIGZAG_UP_CHANCE = ConfigurationProperty.integer("zigzag_up_chance");
 
-    public CanopyLogic(ResourceLocation registryName) {
+    public CanopyLogic(Identifier registryName) {
         super(registryName);
     }
 

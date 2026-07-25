@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_brimwood_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:brimwood",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_brimwood_log",
+        "rings": "regions_unexplored:block/stripped_brimwood_log_top"
+      }
     }
   }
 }

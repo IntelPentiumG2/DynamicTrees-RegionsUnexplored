@@ -20,7 +20,7 @@ import dtteam.dtru.block.TransitionLogBranchBlock;
 import dtteam.dtru.tree.TransitionLogFamily;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -30,7 +30,7 @@ public class StrippedBottomGenFeature extends GenFeature {
 
 	public static final ConfigurationProperty<Integer> MAX_HEIGHT = ConfigurationProperty.integer("max_height");
 
-	public StrippedBottomGenFeature(ResourceLocation registryName) {
+	public StrippedBottomGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 

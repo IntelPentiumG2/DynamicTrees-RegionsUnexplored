@@ -1,7 +1,10 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/green_bioshroom_root"
+      "type": "dynamictrees:surface_root",
+      "textures": {
+        "bark": "regions_unexplored:block/green_bioshroom_stem"
+      }
     }
   }
 }

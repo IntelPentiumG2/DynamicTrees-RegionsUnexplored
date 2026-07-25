@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/ashen_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:ashen",
+      "textures": {
+        "bark": "regions_unexplored:block/ashen_log",
+        "rings": "regions_unexplored:block/ashen_log_top"
+      }
     }
   }
 }

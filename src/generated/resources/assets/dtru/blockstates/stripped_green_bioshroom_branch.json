@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_green_bioshroom_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:green_bioshroom",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_green_bioshroom_stem",
+        "rings": "regions_unexplored:block/stripped_green_bioshroom_stem_top"
+      }
     }
   }
 }

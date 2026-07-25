@@ -1,8 +1,7 @@
 {
   "parent": "dynamictrees:block/smartmodel/sapling",
-  "render_type": "minecraft:cutout_mipped",
   "textures": {
-    "leaves": "regions_unexplored:block/mauve_leaves",
-    "log": "regions_unexplored:block/mauve_log"
+    "leaves": "regions_unexplored:block/lavender_wisteria_leaves",
+    "log": "regions_unexplored:block/wisteria_log"
   }
 }

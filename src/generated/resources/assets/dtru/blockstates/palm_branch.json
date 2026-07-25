@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/palm_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:palm",
+      "textures": {
+        "bark": "regions_unexplored:block/palm_log",
+        "rings": "regions_unexplored:block/palm_log_top"
+      }
     }
   }
 }

@@ -6,7 +6,7 @@ import com.dtteam.dynamictrees.DynamicTrees;
 import com.dtteam.dynamictrees.block.branch.BasicBranchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +20,7 @@ public class BambooBranchBlock extends BasicBranchBlock {
 
     public static final BooleanProperty LEAVES =  BooleanProperty.create("leaves");
 
-    public BambooBranchBlock(ResourceLocation name, Properties properties) {
+    public BambooBranchBlock(Identifier name, Properties properties) {
         super(name, properties);
     }
 

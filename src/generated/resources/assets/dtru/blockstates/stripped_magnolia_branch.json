@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_magnolia_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:magnolia",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_magnolia_log",
+        "rings": "regions_unexplored:block/stripped_magnolia_log_top"
+      }
     }
   }
 }

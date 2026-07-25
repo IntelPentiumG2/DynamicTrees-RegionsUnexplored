@@ -1,47 +1,49 @@
 package dtteam.dtru.tree;
 
-import com.dtteam.dynamictrees.api.lazyvalue.MutableLazyValue;
 import com.dtteam.dynamictrees.api.registry.TypedRegistry;
-import com.dtteam.dynamictrees.block.branch.BasicBranchBlock;
 import com.dtteam.dynamictrees.block.branch.BranchBlock;
 import com.dtteam.dynamictrees.block.branch.ThickBranchBlock;
-import com.dtteam.dynamictrees.data.Generator;
-import com.dtteam.dynamictrees.data.generator.BranchStateGenerator;
-import com.dtteam.dynamictrees.data.provider.DTBlockStateProvider;
-import com.dtteam.dynamictrees.registry.NeoForgeRegistryHandler;
+import com.dtteam.dynamictrees.tree.BranchEntry;
 import com.dtteam.dynamictrees.tree.family.Family;
-import com.dtteam.dynamictrees.utility.Optionals;
-import com.dtteam.dynamictrees.utility.ResourceLocationUtils;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
+import com.dtteam.dynamictrees.utility.IdentifierUtils;
+import dtteam.dtru.DynamicTreesRU;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
 public class BrimwoodFamily extends TransitionLogFamily {
 
     public static final TypedRegistry.EntryType<Family> TYPE = TypedRegistry.newType(BrimwoodFamily::new);
 
-    public BrimwoodFamily(ResourceLocation name) {
-        super(name, false, false);
-        magmaBranchStateGenerator = MutableLazyValue.supplied(MagmaBranchStateGenerator::new);
-    }
+    /** Follows {@code AltBranchFamily}, which claims index 2 for its own extra branch. */
+    public static final int MAGMA_BRANCH_INDEX = 2;
 
-    protected Supplier<BranchBlock> magmaBranch;
-    protected Block primitiveMagmaLog;
-    protected final MutableLazyValue<MagmaBranchStateGenerator> magmaBranchStateGenerator;
+    public static final Identifier MAGMA_BRANCH_GENERATOR = DynamicTreesRU.location("magma_branch");
+
+    /** Texture override keys for the magma branch. */
+    public static final String MAGMA_BRANCH = "magma_branch";
+    public static final String MAGMA_BRANCH_TOP = "magma_branch_top";
+
+    public BrimwoodFamily(Identifier name) {
+        super(name, false, false);
+    }
 
     @Override
     public void setupBlocks() {
         super.setupBlocks();
 
-        this.magmaBranch = setupBranch(createMagmaBranch(getBranchName("magma_")), true);
+        addBranch(MAGMA_BRANCH_INDEX, new BranchEntry(this, getBranchName("magma_"))
+                .setBlockProperties(getBranchProperties().lightLevel(state -> 4))
+                .CreateBlock(this::createMagmaBranch));
     }
 
-    protected BranchBlock createMagmaBranchBlock(ResourceLocation name) {
-        BasicBranchBlock branch = new ThickBranchBlock(name, this.getProperties().lightLevel(b->4)){
+    protected BranchBlock createMagmaBranch(Identifier name, BlockBehaviour.Properties properties) {
+        return new ThickBranchBlock(name, properties) {
             @Override
             public Optional<Block> getPrimitiveLog() {
                 if (getFamily() instanceof BrimwoodFamily magmaLogFamily)
@@ -49,42 +51,42 @@ public class BrimwoodFamily extends TransitionLogFamily {
                 return super.getPrimitiveLog();
             }
         };
-        if (this.isFireProof()) {
-            branch.setFireSpreadSpeed(0).setFlammability(0);
-        }
-
-        return branch;
-    }
-
-    protected Supplier<BranchBlock> createMagmaBranch(ResourceLocation name) {
-        return NeoForgeRegistryHandler.addBlock(ResourceLocationUtils.suffix(name, this.getBranchNameSuffix()), () -> this.createMagmaBranchBlock(name));
     }
 
     public Family setPrimitiveMagmaLog(Block primitiveLog) {
-        this.primitiveMagmaLog = primitiveLog;
-        magmaBranch.get().setPrimitiveLogDrops(new ItemStack(primitiveLog));
+        branches.get(MAGMA_BRANCH_INDEX).setPrimitiveBlock(primitiveLog);
         return this;
     }
 
     public Optional<BranchBlock> getMagmaBranch() {
-        return Optionals.ofBlock(magmaBranch.get());
+        return getBranchBlock(MAGMA_BRANCH_INDEX);
     }
 
     public Optional<Block> getPrimitiveMagmaLog() {
-        return Optionals.ofBlock(primitiveMagmaLog);
+        return getPrimitiveLog(MAGMA_BRANCH_INDEX);
     }
 
-    public void generateStateData(DTBlockStateProvider provider) {
-        super.generateStateData(provider);
-        (this.magmaBranchStateGenerator.get()).generate(provider, this);
+    @Override
+    public List<Identifier> getBlockModelGenerators() {
+        final List<Identifier> generators = new LinkedList<>(super.getBlockModelGenerators());
+        generators.add(MAGMA_BRANCH_GENERATOR);
+        return generators;
     }
 
-    public static class MagmaBranchStateGenerator extends BranchStateGenerator {
-        public @NotNull Generator.Dependencies gatherDependencies(@NotNull Family input) {
-            if (input instanceof BrimwoodFamily castedInput)
-                return (new Dependencies()).append(BRANCH, castedInput.getMagmaBranch()).append(PRIMITIVE_LOG, castedInput.getPrimitiveMagmaLog());
-            return super.gatherDependencies(input);
+    /**
+     * The magma log has no matching {@code _top} texture, so the magma branch borrows the plain
+     * brimwood one for its rings unless overridden.
+     */
+    @Override
+    public void addBranchTextures(BiConsumer<String, Identifier> textureConsumer, Identifier primitiveLogLocation, Block sourceBlock) {
+        if (getPrimitiveMagmaLog().map(sourceBlock::equals).orElse(false)) {
+            textureConsumer.accept("bark", getTexturePath(MAGMA_BRANCH)
+                    .orElse(primitiveLogLocation));
+            textureConsumer.accept("rings", getTexturePath(MAGMA_BRANCH_TOP)
+                    .orElseGet(() -> IdentifierUtils.suffix(primitiveLogLocation, "_top")));
+            return;
         }
+        super.addBranchTextures(textureConsumer, primitiveLogLocation, sourceBlock);
     }
 
 }

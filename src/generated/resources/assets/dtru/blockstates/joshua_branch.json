@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/joshua_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:joshua",
+      "textures": {
+        "bark": "regions_unexplored:block/joshua_log",
+        "rings": "regions_unexplored:block/joshua_log_top"
+      }
     }
   }
 }

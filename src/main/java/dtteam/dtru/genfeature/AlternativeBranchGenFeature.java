@@ -24,9 +24,10 @@ import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.random.WeightedEntry;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.random.Weighted;
+import net.minecraft.util.random.WeightedList;
+
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -44,14 +45,14 @@ public class AlternativeBranchGenFeature extends GenFeature {
     public static final ConfigurationProperty<Block> ALT_BRANCH_BLOCK = ConfigurationProperty.block("alternative_branch_block");
     public static final ConfigurationProperty<Integer> MIN_RADIUS = ConfigurationProperty.integer("minimum_radius");
 
-    public AlternativeBranchGenFeature(ResourceLocation registryName) {
+    public AlternativeBranchGenFeature(Identifier registryName) {
         super(registryName);
     }
 
     @Override
     public boolean shouldApply(Species species, GenFeatureConfiguration configuration) {
         Block branch = configuration.get(ALT_BRANCH_BLOCK);
-        if (TreeHelper.isBranch(branch) && species.getFamily().isValidBranchBlock((BranchBlock) branch)){
+        if (TreeHelper.isBranch(branch) && species.getFamily().getBranchBlockIndex((BranchBlock) branch) >= 0){
             return true;
         }
         LogManager.getLogger().warn("Failed to find branch block for the alternative branch feature on species {}", species);
@@ -103,20 +104,20 @@ public class AlternativeBranchGenFeature extends GenFeature {
     }
 
     private void placeAltBranches(boolean isWorldgen, GenFeatureConfiguration configuration, LevelAccessor world, BlockPos rootPos, Family family){
-        SimpleWeightedRandomList.Builder<BlockPos> listBuilder = new SimpleWeightedRandomList.Builder<>();
+        WeightedList.Builder<BlockPos> listBuilder = WeightedList.builder();
         final FindValidBranchesNode altBranchPlacer = new FindValidBranchesNode(listBuilder, configuration.get(MIN_RADIUS), family);
         TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(altBranchPlacer));
-        SimpleWeightedRandomList<BlockPos> validSpots = listBuilder.build();
+        WeightedList<BlockPos> validSpots = listBuilder.build();
 
         if (!validSpots.isEmpty()) {
             if (isWorldgen){
-                for (BlockPos listPos : validSpots.unwrap().stream().map(WeightedEntry.Wrapper::data).collect(Collectors.toList()))
+                for (BlockPos listPos : validSpots.unwrap().stream().map(Weighted::value).collect(Collectors.toList()))
                     if (world.getRandom().nextFloat() < configuration.get(WORLDGEN_PLACE_CHANCE))
                         placeBranch(configuration, world, listPos);
             } else {
-                WeightedEntry.Wrapper<BlockPos> posWrapper = validSpots.getRandom(world.getRandom()).orElse(null);
-                if (posWrapper == null) return;
-                placeBranch(configuration, world, posWrapper.data());
+                BlockPos chosen = validSpots.getRandom(world.getRandom()).orElse(null);
+                if (chosen == null) return;
+                placeBranch(configuration, world, chosen);
             }
 
         }
@@ -132,11 +133,11 @@ public class AlternativeBranchGenFeature extends GenFeature {
 
     public static class FindValidBranchesNode implements NodeInspector {
 
-        private final SimpleWeightedRandomList.Builder<BlockPos> validSpots;
+        private final WeightedList.Builder<BlockPos> validSpots;
         private final int minRadius;
         private final Family family;
 
-        public FindValidBranchesNode(SimpleWeightedRandomList.Builder<BlockPos> validSpots, int minRadius, Family family) {
+        public FindValidBranchesNode(WeightedList.Builder<BlockPos> validSpots, int minRadius, Family family) {
             this.validSpots = validSpots;
             this.minRadius = minRadius;
             this.family = family;

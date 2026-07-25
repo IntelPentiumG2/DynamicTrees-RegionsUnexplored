@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/cypress_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:cypress",
+      "textures": {
+        "bark": "regions_unexplored:block/cypress_log",
+        "rings": "regions_unexplored:block/cypress_log_top"
+      }
     }
   }
 }

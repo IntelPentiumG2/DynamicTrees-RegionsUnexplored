@@ -11,13 +11,13 @@ import com.dtteam.dynamictrees.api.configuration.ConfigurationProperty;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeature;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeatureConfiguration;
 import com.dtteam.dynamictrees.systems.genfeature.context.FullGenerationContext;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class GenerateBiomePredicateGenFeature extends GenFeature {
 
     public static final ConfigurationProperty<GenFeatureConfiguration> GEN_FEATURE = ConfigurationProperty.property("gen_feature", GenFeatureConfiguration.class);
 
-    public GenerateBiomePredicateGenFeature(ResourceLocation registryName) {
+    public GenerateBiomePredicateGenFeature(Identifier registryName) {
         super(registryName);
     }
 

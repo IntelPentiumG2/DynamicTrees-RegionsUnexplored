@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/mauve_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:mauve",
+      "textures": {
+        "bark": "regions_unexplored:block/wisteria_log",
+        "rings": "regions_unexplored:block/wisteria_log_top"
+      }
     }
   }
 }

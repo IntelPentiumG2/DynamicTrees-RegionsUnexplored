@@ -28,8 +28,8 @@ import net.regions_unexplored.registry.RUBlocks;
 
 public class DTRUPlusRegistries {
 
-    public static void gatherData(final GatherDataEvent event) {
-        GatherDataHelper.gatherAllData(DynamicTreesRU.MOD_ID, event,
+    public static void gatherClientData(final GatherDataEvent.Client event) {
+        GatherDataHelper.gatherClientData(DynamicTreesRU.MOD_ID, event,
                 SoilProperties.REGISTRY,
                 Family.REGISTRY,
                 Species.REGISTRY,

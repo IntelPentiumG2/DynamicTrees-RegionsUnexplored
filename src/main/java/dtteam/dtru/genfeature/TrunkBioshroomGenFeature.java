@@ -20,7 +20,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -34,7 +34,7 @@ public class TrunkBioshroomGenFeature extends GenFeature {
 	public static final ConfigurationProperty<Block> BLOCK = ConfigurationProperty.block("block");
 	public static final ConfigurationProperty<Integer> LOWEST_BLOCK_POS = ConfigurationProperty.integer("lowest_block_pos");
 
-	public TrunkBioshroomGenFeature(ResourceLocation registryName) {
+	public TrunkBioshroomGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 
@@ -100,7 +100,7 @@ public class TrunkBioshroomGenFeature extends GenFeature {
 		while (TreeHelper.isBranch(level.getBlockState(testPos))){
 			testPos.move(Direction.UP);
 			for (Direction dir : Direction.Plane.HORIZONTAL){
-				BlockPos side = testPos.offset(dir.getNormal());
+				BlockPos side = testPos.offset(dir.getUnitVec3i());
 				validPositions.add(side);
 			}
 		}

@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/redwood_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:redwood",
+      "textures": {
+        "bark": "regions_unexplored:block/redwood_log",
+        "rings": "regions_unexplored:block/redwood_log_top"
+      }
     }
   }
 }

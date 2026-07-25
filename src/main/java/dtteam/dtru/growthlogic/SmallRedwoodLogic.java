@@ -8,11 +8,11 @@ import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionSelectionCon
 import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class SmallRedwoodLogic extends ConiferLogic {
 
-    public SmallRedwoodLogic(ResourceLocation registryName) { super(registryName); }
+    public SmallRedwoodLogic(Identifier registryName) { super(registryName); }
 
     @Override
     protected GrowthLogicKitConfiguration createDefaultConfiguration() {

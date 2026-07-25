@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_bamboo_branch"
+      "type": "dtru:bamboo",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_bamboo_log",
+        "leaves": "dynamictrees:block/air",
+        "rings": "regions_unexplored:block/stripped_bamboo_log"
+      }
     }
   }
 }

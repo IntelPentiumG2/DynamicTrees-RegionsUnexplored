@@ -14,12 +14,12 @@ package dtteam.dtru.genfeature;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeature;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeatureConfiguration;
 import com.dtteam.dynamictrees.systems.genfeature.context.FullGenerationContext;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.material.Fluids;
 
 public class PreventWaterGenerationGenFeature extends GenFeature {
 
-	public PreventWaterGenerationGenFeature(ResourceLocation registryName) {
+	public PreventWaterGenerationGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 

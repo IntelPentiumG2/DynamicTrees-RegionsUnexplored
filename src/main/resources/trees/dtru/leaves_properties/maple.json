@@ -1,4 +1,5 @@
 {
   "primitive_leaves": "regions_unexplored:maple_leaves",
-  "has_tick_particles": true
+  "particle": "regions_unexplored:leaves/standard",
+  "particle_chance": 0.025
 }

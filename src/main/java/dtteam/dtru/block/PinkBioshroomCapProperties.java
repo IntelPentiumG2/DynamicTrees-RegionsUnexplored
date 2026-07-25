@@ -10,7 +10,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.CapProperties;
 import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,13 +24,13 @@ public class PinkBioshroomCapProperties extends BioshroomCapProperties {
 
     public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(PinkBioshroomCapProperties::new);
 
-    public PinkBioshroomCapProperties(ResourceLocation registryName) {
+    public PinkBioshroomCapProperties(Identifier registryName) {
         super(registryName);
     }
 
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
-        return new DynamicCapCenterBlock(this, properties){
+        return new DynamicCapCenterBlock(this.getCenterBlockRegistryName(), this, properties){
 
             @Override
             public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
@@ -88,7 +88,7 @@ public class PinkBioshroomCapProperties extends BioshroomCapProperties {
                 if (yMoved || age == 1) {
 
                     for (Direction dir : Direction.Plane.HORIZONTAL) {
-                        float dot = (float) (dir.getNormal().getX() * centerDirection.x + dir.getNormal().getZ() * centerDirection.z);
+                        float dot = (float) (dir.getUnitVec3i().getX() * centerDirection.x + dir.getUnitVec3i().getZ() * centerDirection.z);
                         if (dot >= 0) {
                             dirs[negativeFactor ? dir.ordinal() : dir.getOpposite().ordinal()] = true;
                         }

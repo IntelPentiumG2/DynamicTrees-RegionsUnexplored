@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "regions_unexplored:block/mycotoxic_moss"
+        "model": "regions_unexplored:block/mycotoxic_nylium"
       }
     },
     {

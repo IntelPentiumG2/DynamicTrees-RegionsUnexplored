@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/dead_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:dead",
+      "textures": {
+        "bark": "regions_unexplored:block/dead_log",
+        "rings": "regions_unexplored:block/dead_log_top"
+      }
     }
   }
 }

@@ -4,11 +4,11 @@ import com.dtteam.dynamictrees.systems.growthlogic.GrowthLogicKitConfiguration;
 import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulationContext;
 import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionSelectionContext;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class BambooLogic extends VariateHeightLogic{
 
-    public BambooLogic(ResourceLocation registryName) {
+    public BambooLogic(Identifier registryName) {
         super(registryName);
     }
 

@@ -15,7 +15,7 @@ import com.dtteam.dynamictrees.systems.genfeature.context.FullGenerationContext;
 import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.worldgen.DynamicTreeGenerationContext;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /**
  * @author Max Hyper
@@ -26,7 +26,7 @@ public class ReplaceOnRadiusGenFeature extends GenFeature {
     public static final ConfigurationProperty<Integer> MIN_RADIUS = ConfigurationProperty.integer("min_radius");
     public static final ConfigurationProperty<Integer> MAX_RADIUS = ConfigurationProperty.integer("max_radius");
 
-    public ReplaceOnRadiusGenFeature(ResourceLocation registryName) {
+    public ReplaceOnRadiusGenFeature(Identifier registryName) {
         super(registryName);
     }
 

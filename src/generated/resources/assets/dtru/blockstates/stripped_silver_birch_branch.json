@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_silver_birch_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:silver_birch",
+      "textures": {
+        "bark": "minecraft:block/stripped_birch_log",
+        "rings": "minecraft:block/stripped_birch_log_top"
+      }
     }
   }
 }

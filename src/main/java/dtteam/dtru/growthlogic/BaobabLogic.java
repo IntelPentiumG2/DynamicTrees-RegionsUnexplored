@@ -7,12 +7,12 @@ import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulation
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 
 public class BaobabLogic extends VariateHeightLogic {
 
-    public BaobabLogic(ResourceLocation registryName) {
+    public BaobabLogic(Identifier registryName) {
         super(registryName);
     }
 
@@ -31,7 +31,7 @@ public class BaobabLogic extends VariateHeightLogic {
         Direction originDir = signal.dir.getOpposite();
 
         if (!signal.isInTrunk()){
-            Direction relativePosToRoot = Direction.fromDelta(signal.delta.getX(), 0, signal.delta.getY());
+            Direction relativePosToRoot = Direction.getNearest(signal.delta.getX(), 0, signal.delta.getY(), null);
             if (relativePosToRoot != null){
                 if (signal.energy > 2){ //Flaring at end points, higher min energy means more flaring
                     probMap[Direction.DOWN.ordinal()] = 0;
@@ -39,7 +39,7 @@ public class BaobabLogic extends VariateHeightLogic {
                         probMap[dir.ordinal()] = 0;
                     }
                 }
-                boolean isBranchUp = world.getBlockState(pos.offset(relativePosToRoot.getNormal())).getBlock() instanceof BranchBlock;
+                boolean isBranchUp = world.getBlockState(pos.offset(relativePosToRoot.getUnitVec3i())).getBlock() instanceof BranchBlock;
                 boolean isBranchSide = world.getBlockState(pos.above()).getBlock() instanceof BranchBlock;
                 probMap[Direction.UP.ordinal()] = isBranchUp && !isBranchSide? 0:2;
                 probMap[relativePosToRoot.ordinal()] = isBranchSide && !isBranchUp? 0:3;

@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/kapok_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:kapok",
+      "textures": {
+        "bark": "regions_unexplored:block/kapok_log",
+        "rings": "regions_unexplored:block/kapok_log_top"
+      }
     }
   }
 }

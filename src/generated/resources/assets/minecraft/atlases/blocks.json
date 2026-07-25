@@ -126,11 +126,11 @@
     },
     {
       "type": "dynamictrees:thick_branch_rings",
-      "resource": "regions_unexplored:block/mauve_log_top"
+      "resource": "regions_unexplored:block/wisteria_log_top"
     },
     {
       "type": "dynamictrees:thick_branch_rings",
-      "resource": "regions_unexplored:block/stripped_mauve_log_top"
+      "resource": "regions_unexplored:block/stripped_wisteria_log_top"
     },
     {
       "type": "dynamictrees:thick_branch_rings",
@@ -155,14 +155,6 @@
     {
       "type": "dynamictrees:thick_branch_rings",
       "resource": "regions_unexplored:block/stripped_pink_bioshroom_stem_top"
-    },
-    {
-      "type": "dynamictrees:thick_branch_rings",
-      "resource": "regions_unexplored:block/redwood_log_top"
-    },
-    {
-      "type": "dynamictrees:thick_branch_rings",
-      "resource": "regions_unexplored:block/stripped_redwood_log_top"
     },
     {
       "type": "dynamictrees:thick_branch_rings",
@@ -195,6 +187,14 @@
     {
       "type": "dynamictrees:thick_branch_rings",
       "resource": "regions_unexplored:block/stripped_yellow_bioshroom_stem_top"
+    },
+    {
+      "type": "dynamictrees:thick_branch_rings",
+      "resource": "regions_unexplored:block/redwood_log_top"
+    },
+    {
+      "type": "dynamictrees:thick_branch_rings",
+      "resource": "regions_unexplored:block/stripped_redwood_log_top"
     }
   ]
 }

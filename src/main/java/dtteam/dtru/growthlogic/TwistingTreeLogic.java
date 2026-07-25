@@ -7,7 +7,7 @@ import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulation
 import com.dtteam.dynamictrees.tree.TreeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 
 import java.util.function.BiConsumer;
@@ -18,7 +18,7 @@ public class TwistingTreeLogic extends VariateHeightLogic {
     public static final ConfigurationProperty<Integer> DOWN_PROBABILITY = ConfigurationProperty.integer("down_probability");
     public static final ConfigurationProperty<Boolean> SPLIT_ENDS = ConfigurationProperty.bool("split_ends");
 
-    public TwistingTreeLogic(ResourceLocation registryName) {
+    public TwistingTreeLogic(Identifier registryName) {
         super(registryName);
     }
 
@@ -70,7 +70,7 @@ public class TwistingTreeLogic extends VariateHeightLogic {
         int count = 0;
         for (Direction direction : Direction.values()){
             if (direction == originDir) continue;
-            int rad = TreeHelper.getRadius(level,pos.offset(direction.getNormal()));
+            int rad = TreeHelper.getRadius(level,pos.offset(direction.getUnitVec3i()));
             if (rad > 0) {
                 count++;
                 runForValidDirs.accept(direction, rad);

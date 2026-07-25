@@ -25,7 +25,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -38,7 +38,7 @@ public class GlowingPinkBioshroomGenFeature extends GenFeature {
 	public static final ConfigurationProperty<Block> BLOCK = ConfigurationProperty.block("block");
 	public static final ConfigurationProperty<Boolean> CUTOUT = ConfigurationProperty.bool("cutout");
 
-	public GlowingPinkBioshroomGenFeature(ResourceLocation registryName) {
+	public GlowingPinkBioshroomGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 
@@ -93,11 +93,11 @@ public class GlowingPinkBioshroomGenFeature extends GenFeature {
 
 	private boolean placeGlowingBlocksInValidPlace(GenFeatureConfiguration configuration, LevelAccessor level, BlockPos end, Direction dir) {
 		Block glowingBlock = configuration.get(BLOCK);
-		BlockPos.MutableBlockPos testPos = end.offset(dir.getNormal()).mutable();
+		BlockPos.MutableBlockPos testPos = end.offset(dir.getUnitVec3i()).mutable();
 		int layers = 0;
 		while (level.getBlockState(testPos).getBlock() instanceof DynamicCapBlock){
-			BlockState right = level.getBlockState(testPos.offset(dir.getClockWise().getNormal()));
-			BlockState left = level.getBlockState(testPos.offset(dir.getCounterClockWise().getNormal()));
+			BlockState right = level.getBlockState(testPos.offset(dir.getClockWise().getUnitVec3i()));
+			BlockState left = level.getBlockState(testPos.offset(dir.getCounterClockWise().getUnitVec3i()));
 			if (left.getBlock() instanceof DynamicCapBlock && right.getBlock() instanceof DynamicCapBlock){
 				layers++;
 			}

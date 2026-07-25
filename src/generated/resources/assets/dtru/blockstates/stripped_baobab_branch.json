@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_baobab_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:baobab",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_baobab_log",
+        "rings": "regions_unexplored:block/stripped_baobab_log_top"
+      }
     }
   }
 }

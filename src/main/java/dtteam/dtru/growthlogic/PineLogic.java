@@ -7,11 +7,11 @@ import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulation
 import com.dtteam.dynamictrees.tree.TreeHelper;
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class PineLogic extends ConiferLogic {
 
-    public PineLogic(ResourceLocation registryName) {
+    public PineLogic(Identifier registryName) {
         super(registryName);
     }
 
@@ -35,7 +35,7 @@ public class PineLogic extends ConiferLogic {
 
         if (signal.isInTrunk())
             for (Direction dir : CoordUtils.HORIZONTALS)
-                if (TreeHelper.isBranch(context.level().getBlockState(context.pos().offset(dir.getNormal())))){
+                if (TreeHelper.isBranch(context.level().getBlockState(context.pos().offset(dir.getUnitVec3i())))){
                     probMap[2] = probMap[3] = probMap[4] = probMap[5] = 0;
                     probMap[dir.ordinal()] = 2;
                     break;

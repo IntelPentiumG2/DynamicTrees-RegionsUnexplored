@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_cobalt_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:cobalt",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_cobalt_log",
+        "rings": "regions_unexplored:block/stripped_cobalt_log_top"
+      }
     }
   }
 }

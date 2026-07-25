@@ -4,5 +4,6 @@
   "scruffy_max_hydro": 1,
   "primitive_leaves": "regions_unexplored:magnolia_leaves",
   "cell_kit": "acacia",
-  "has_tick_particles": true
+  "particle": "regions_unexplored:leaves/magnolia",
+  "particle_chance": 0.025
 }

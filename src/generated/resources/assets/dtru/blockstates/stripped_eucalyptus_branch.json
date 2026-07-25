@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_eucalyptus_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:eucalyptus",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_eucalyptus_log",
+        "rings": "regions_unexplored:block/stripped_eucalyptus_log_top"
+      }
     }
   }
 }

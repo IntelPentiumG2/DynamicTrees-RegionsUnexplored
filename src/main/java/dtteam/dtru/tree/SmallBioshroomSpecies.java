@@ -8,7 +8,7 @@ import com.dtteam.dynamictreesplus.systems.nodemapper.MushroomInflatorNode;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import dtteam.dtru.systems.SmallBioshroomInflatorNode;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import oshi.util.tuples.Pair;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class SmallBioshroomSpecies extends HugeMushroomSpecies {
 
     public static final TypedRegistry.EntryType<Species> TYPE = createDefaultMushroomType(SmallBioshroomSpecies::new);
 
-    public SmallBioshroomSpecies(ResourceLocation name, Family family, CapProperties capProperties) {
+    public SmallBioshroomSpecies(Identifier name, Family family, CapProperties capProperties) {
         super(name, family, capProperties);
     }
 

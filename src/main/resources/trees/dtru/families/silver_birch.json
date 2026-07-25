@@ -6,6 +6,7 @@
   "primitive_stripped_log": "stripped_birch_log",
   "max_branch_radius": 8,
   "texture_overrides": {
-    "branch_top": "minecraft:block/birch_log_top"
+    "branch_top": "minecraft:block/birch_log_top",
+    "transition_branch": "regions_unexplored:block/silver_birch_log_base"
   }
 }

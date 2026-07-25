@@ -25,7 +25,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.dtteam.dynamictreesplus.tree.HugeMushroomSpecies;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,7 +36,7 @@ public class GlowingBioshroomGenFeature extends GenFeature {
 
 	public static final ConfigurationProperty<Block> BLOCK = ConfigurationProperty.block("block");
 
-	public GlowingBioshroomGenFeature(ResourceLocation registryName) {
+	public GlowingBioshroomGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 
@@ -92,7 +92,7 @@ public class GlowingBioshroomGenFeature extends GenFeature {
 
 	private boolean placeGlowingBlocksInValidPlace(GenFeatureConfiguration configuration, LevelAccessor level, BlockPos end, Direction dir) {
 		Block glowingBlock = configuration.get(BLOCK);
-		BlockPos sidePos = end.offset(dir.getNormal());
+		BlockPos sidePos = end.offset(dir.getUnitVec3i());
 		if (level.getBlockState(sidePos).canBeReplaced() && level.getBlockState(sidePos.below()).canBeReplaced()){
 			level.setBlock(sidePos, glowingBlock.defaultBlockState(), 3);
 		}

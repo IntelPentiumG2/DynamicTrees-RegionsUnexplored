@@ -82,7 +82,7 @@ config="dtru.mixins.json"
     modId="minecraft"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.21.1,)"
+    versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
@@ -90,14 +90,14 @@ config="dtru.mixins.json"
     modId="dynamictrees"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.4.5,)"
+    versionRange="[1.8.0-BETA04,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.dtru]]
     modId="dynamictreesplus"
     type="optional"
-    versionRange="[1.2.0,)"
+    versionRange="[1.4.0-BETA01,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -105,7 +105,7 @@ config="dtru.mixins.json"
     modId="regions_unexplored"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[0.5.5,)"
+    versionRange="[${regions_unexplored_version},)"
     ordering="AFTER"
     side="BOTH"
 

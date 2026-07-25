@@ -5,6 +5,7 @@ import com.dtteam.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.dtteam.dynamictrees.api.worldgen.FeatureCanceller;
 import com.dtteam.dynamictrees.block.CommonVoxelShapes;
 import com.dtteam.dynamictrees.block.leaves.LeavesProperties;
+import com.dtteam.dynamictrees.deserialization.deserializer.SoundTypeDeserializer;
 import com.dtteam.dynamictrees.event.RegistryEvent;
 import com.dtteam.dynamictrees.event.TypeRegistryEvent;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeature;
@@ -18,13 +19,14 @@ import dtteam.dtru.genfeature.DTRUGenFeatures;
 import dtteam.dtru.growthlogic.DTRUGrowthLogicKits;
 import dtteam.dtru.tree.*;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -34,7 +36,6 @@ import net.regions_unexplored.world.level.feature.configuration.RUTreeConfigurat
 import net.regions_unexplored.world.level.feature.tree.*;
 import net.regions_unexplored.world.level.feature.tree.nether.BrimWillowFeature;
 import net.regions_unexplored.world.level.feature.tree.nether.TallBrimWillowFeature;
-import net.regions_unexplored.worldgen.treedecorator.BlackwoodBioshroomDecorator;
 
 @EventBusSubscriber(modid = DynamicTreesRU.MOD_ID)
 public class DTRURegistries {
@@ -48,6 +49,10 @@ public class DTRURegistries {
     public static void setup() {
         CommonVoxelShapes.SHAPES.put(DynamicTreesRU.location("blue_bioshroom").toString(), SHORT_ROUND_MUSHROOM);
         CommonVoxelShapes.SHAPES.put(DynamicTreesRU.location("pink_bioshroom").toString(), CONE_MUSHROOM);
+
+        // The bioshroom families ask for this, but Dynamic Trees' table of sound types stops before
+        // the cherry wood set, so without this they fall back to the default.
+        SoundTypeDeserializer.registerSoundType(Identifier.withDefaultNamespace("cherry_wood"), SoundType.CHERRY_WOOD);
     }
 
     @SubscribeEvent
@@ -126,15 +131,14 @@ public class DTRURegistries {
             final FeatureConfiguration featureConfig = configuredFeature.config();
 
             if (isConfigClass(featureConfig)) {
-                if (featureConfig instanceof TreeConfiguration treeConfiguration && !treeConfiguration.decorators.isEmpty() && treeConfiguration.decorators.getFirst() instanceof BlackwoodBioshroomDecorator){
-                    return false;
-                }
+                // Regions Unexplored dropped its blackwood bioshroom decorator, so the exemption that
+                // used to keep those trees from being cancelled no longer has anything to match.
                 String nameSpace = "";
-                var firstFeature = configuredFeature.getFeatures().findFirst();
+                var firstFeature = configuredFeature.getSubFeatures().findFirst();
                 if (firstFeature.isEmpty()) return false;
-                final ConfiguredFeature<?, ?> nextConfiguredFeature = firstFeature.get();
+                final ConfiguredFeature<?, ?> nextConfiguredFeature = firstFeature.get().value();
                 final FeatureConfiguration nextFeatureConfig = nextConfiguredFeature.config();
-                final ResourceLocation featureRegistryName = BuiltInRegistries.FEATURE.getKey(nextConfiguredFeature.feature());
+                final Identifier featureRegistryName = BuiltInRegistries.FEATURE.getKey(nextConfiguredFeature.feature());
 
                 if (featureRegistryName != null) {
                     nameSpace = featureRegistryName.getNamespace();

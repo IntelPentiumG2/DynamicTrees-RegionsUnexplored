@@ -1,6 +1,5 @@
 {
   "parent": "dynamictrees:block/smartmodel/mushroom_flat",
-  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "cap": "dtru:block/yellow_bioshroom_cap",
     "stem": "regions_unexplored:block/yellow_bioshroom_stem"

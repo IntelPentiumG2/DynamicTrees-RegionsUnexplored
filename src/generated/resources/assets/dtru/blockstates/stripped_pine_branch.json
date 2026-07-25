@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/stripped_pine_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:pine",
+      "textures": {
+        "bark": "regions_unexplored:block/stripped_pine_log",
+        "rings": "regions_unexplored:block/stripped_pine_log_top"
+      }
     }
   }
 }

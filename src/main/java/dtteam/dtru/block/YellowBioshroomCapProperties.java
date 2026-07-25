@@ -11,7 +11,7 @@ import com.dtteam.dynamictreesplus.block.mushroom.CapProperties;
 import com.dtteam.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.dtteam.dynamictreesplus.systems.mushroomlogic.MushroomCapDisc;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,14 +23,14 @@ public class YellowBioshroomCapProperties extends BioshroomCapProperties {
 
     public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(YellowBioshroomCapProperties::new);
 
-    public YellowBioshroomCapProperties(ResourceLocation registryName) {
+    public YellowBioshroomCapProperties(Identifier registryName) {
         super(registryName);
     }
 
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
 
-        return new DynamicCapCenterBlock(this, properties){
+        return new DynamicCapCenterBlock(this.getCenterBlockRegistryName(), this, properties){
             @Override
             public boolean placeRing(LevelAccessor level, BlockPos pos, int radius, int step, boolean yMoved, boolean negFactor) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);

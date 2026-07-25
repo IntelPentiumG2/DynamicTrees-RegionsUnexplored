@@ -19,7 +19,7 @@ import dtteam.dtru.tree.BrimwoodFamily;
 import dtteam.dtru.tree.TransitionLogFamily;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -29,7 +29,7 @@ public class MagmaBottomGenFeature extends GenFeature {
 
 	public static final ConfigurationProperty<Integer> MAX_HEIGHT = ConfigurationProperty.integer("max_height");
 
-	public MagmaBottomGenFeature(ResourceLocation registryName) {
+	public MagmaBottomGenFeature(Identifier registryName) {
 		super(registryName);
 	}
 

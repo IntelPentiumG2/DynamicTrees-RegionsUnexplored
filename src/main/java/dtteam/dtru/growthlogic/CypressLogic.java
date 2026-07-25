@@ -9,14 +9,14 @@ import com.dtteam.dynamictrees.systems.growthlogic.context.PositionalSpeciesCont
 import com.dtteam.dynamictrees.utility.CoordUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class CypressLogic extends VariateHeightLogic {
 
     public static final ConfigurationProperty<Float> CANOPY_ENERGY = ConfigurationProperty.floatProperty("canopy_energy");
     public static final ConfigurationProperty<Float> BOTTOM_BRANCH_SIDE_ENERGY = ConfigurationProperty.floatProperty("bottom_branch_side_energy");
 
-    public CypressLogic(ResourceLocation registryName) {
+    public CypressLogic(Identifier registryName) {
         super(registryName);
     }
 

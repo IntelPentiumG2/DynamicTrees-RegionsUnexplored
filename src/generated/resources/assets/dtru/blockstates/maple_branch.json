@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/maple_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:maple",
+      "textures": {
+        "bark": "regions_unexplored:block/maple_log",
+        "rings": "regions_unexplored:block/maple_log_top"
+      }
     }
   }
 }

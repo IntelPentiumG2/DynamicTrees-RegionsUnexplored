@@ -8,7 +8,7 @@ import com.dtteam.dynamictrees.block.branch.ThickBranchBlock;
 import com.dtteam.dynamictrees.tree.TreeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,7 +24,7 @@ public class TransitionLogBranchBlock extends ThickBranchBlock {
     boolean transitionOnStripped;
     boolean transitionOnBase;
 
-    public TransitionLogBranchBlock(ResourceLocation name, Properties properties, boolean stripped, boolean base) {
+    public TransitionLogBranchBlock(Identifier name, Properties properties, boolean stripped, boolean base) {
         super(name, properties);
         this.transitionOnStripped = stripped;
         this.transitionOnBase = base;

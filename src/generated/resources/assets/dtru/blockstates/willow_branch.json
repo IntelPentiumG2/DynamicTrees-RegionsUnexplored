@@ -1,7 +1,12 @@
 {
   "variants": {
     "": {
-      "model": "dtru:block/willow_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:willow",
+      "textures": {
+        "bark": "regions_unexplored:block/willow_log",
+        "rings": "regions_unexplored:block/willow_log_top"
+      }
     }
   }
 }

@@ -1,10 +1,20 @@
 {
   "variants": {
     "transition=false": {
-      "model": "dtru:block/brimwood_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:brimwood",
+      "textures": {
+        "bark": "regions_unexplored:block/brimwood_log",
+        "rings": "regions_unexplored:block/brimwood_log_top"
+      }
     },
     "transition=true": {
-      "model": "dtru:block/brimwood_branch_transition"
+      "type": "dynamictrees:branch",
+      "family": "dtru:brimwood",
+      "textures": {
+        "bark": "regions_unexplored:block/brimwood_log_transition",
+        "rings": "regions_unexplored:block/brimwood_log_top"
+      }
     }
   }
 }

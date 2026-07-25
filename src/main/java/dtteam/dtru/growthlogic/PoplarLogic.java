@@ -5,11 +5,11 @@ import com.dtteam.dynamictrees.systems.growthlogic.GrowthLogicKitConfiguration;
 import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionManipulationContext;
 import com.dtteam.dynamictrees.systems.growthlogic.context.DirectionSelectionContext;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class PoplarLogic extends VariateHeightLogic {
 
-    public PoplarLogic(ResourceLocation registryName) {
+    public PoplarLogic(Identifier registryName) {
         super(registryName);
     }
 

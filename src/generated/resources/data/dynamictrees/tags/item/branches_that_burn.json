@@ -15,9 +15,9 @@
     "dtru:mauve_branch",
     "dtru:palm_branch",
     "dtru:pine_branch",
-    "dtru:redwood_branch",
     "dtru:silver_birch_branch",
     "dtru:socotra_branch",
-    "dtru:willow_branch"
+    "dtru:willow_branch",
+    "dtru:redwood_branch"
   ]
 }

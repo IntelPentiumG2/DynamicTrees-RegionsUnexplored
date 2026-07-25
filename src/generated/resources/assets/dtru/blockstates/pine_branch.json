@@ -1,10 +1,20 @@
 {
   "variants": {
     "transition=false": {
-      "model": "dtru:block/pine_branch"
+      "type": "dynamictrees:branch",
+      "family": "dtru:pine",
+      "textures": {
+        "bark": "regions_unexplored:block/pine_log",
+        "rings": "regions_unexplored:block/pine_log_top"
+      }
     },
     "transition=true": {
-      "model": "dtru:block/pine_branch_transition"
+      "type": "dynamictrees:branch",
+      "family": "dtru:pine",
+      "textures": {
+        "bark": "regions_unexplored:block/pine_log_transition",
+        "rings": "regions_unexplored:block/pine_log_top"
+      }
     }
   }
 }
