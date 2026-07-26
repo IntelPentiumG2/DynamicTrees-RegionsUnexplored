@@ -878,6 +878,249 @@
     }
   },
   {
+    "__comment": "Old growth oak, dense enough to close the canopy.",
+    "select": {
+      "name": "regions_unexplored:old_growth_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "oak": 10,
+          "oak_undergrowth": 2
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 1.0,
+      "forestness": 1.0
+    }
+  },
+  {
+    "__comment": "Regions Unexplored's own beach, palms at roughly the one-in-five it places them.",
+    "select": {
+      "name": "regions_unexplored:grassy_beach"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:palm": 2,
+          "dtru:short_palm": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 0.2
+    }
+  },
+  {
+    "__comment": "Shrubs and stunted conifers, as in the shrubland.",
+    "select": {
+      "name": "regions_unexplored:tundra"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:oak_twiglet": 8,
+          "dtru:spruce_twiglet": 8,
+          "dtru:pine_twiglet": 4
+        }
+      },
+      "density": [
+        1.5
+      ],
+      "chance": 0.4
+    }
+  },
+  {
+    "__comment": "Pine, thinned out for the exposed slopes.",
+    "select": {
+      "name": "regions_unexplored:mountains"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:pine": 1
+        }
+      },
+      "density": [
+        0.8
+      ],
+      "chance": 0.7,
+      "forestness": 0.6
+    }
+  },
+  {
+    "__comment": "Wisteria. Salmon has no species here, so lavender and sky carry the grove.",
+    "select": {
+      "name": "regions_unexplored:wisteria_grove"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:mauve": 3,
+          "dtru:mega_mauve": 2,
+          "dtru:enchanted_birch": 3
+        }
+      },
+      "density": [
+        0.8
+      ],
+      "chance": 0.9,
+      "forestness": 0.9
+    }
+  },
+  {
+    "__comment": "Maple and aspen birch, sparser than the sheltered maple forest.",
+    "select": {
+      "name": "regions_unexplored:windswept_maple_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:maple": 4,
+          "dtru:red_maple": 2,
+          "dtru:silver_birch": 2,
+          "oak": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 0.8,
+      "forestness": 0.8
+    }
+  },
+  {
+    "__comment": "As the boreal taiga, at the density old growth places it.",
+    "select": {
+      "name": "regions_unexplored:old_growth_boreal_taiga"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:larch": 24,
+          "dtru:golden_larch": 4,
+          "dtru:twisting_birch": 1,
+          "oak_undergrowth": 3
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 1.0,
+      "forestness": 1.0
+    }
+  },
+  {
+    "__comment": "As the golden boreal taiga, at the density old growth places it.",
+    "select": {
+      "name": "regions_unexplored:old_growth_golden_boreal_taiga"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:golden_larch": 24,
+          "dtru:larch": 4,
+          "dtru:twisting_birch": 1,
+          "oak_undergrowth": 3
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 1.0,
+      "forestness": 1.0
+    }
+  },
+  {
+    "__comment": "Shares the prairie's tree group upstream, so it shares its rule.",
+    "select": {
+      "name": "regions_unexplored:barley_fields"
+    },
+    "apply": {
+      "species": "oak",
+      "density": [
+        1.5
+      ],
+      "chance": 0.02
+    }
+  },
+  {
+    "__comment": "A pine every thirty tries upstream.",
+    "select": {
+      "name": "regions_unexplored:highland_fields"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:pine": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 0.05
+    }
+  },
+  {
+    "__comment": "A magnolia every fifteen tries upstream.",
+    "select": {
+      "name": "regions_unexplored:poppy_fields"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:magnolia": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 0.1
+    }
+  },
+  {
+    "__comment": "Shares the autumnal maple forest's tree group upstream, so it shares its rule.",
+    "select": {
+      "name": "regions_unexplored:pumpkin_fields"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:maple": 2,
+          "dtru:orange_maple": 2,
+          "dtru:red_maple": 2,
+          "dtru:silver_birch": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 1.0,
+      "forestness": 1.0
+    }
+  },
+  {
+    "__comment": "Palms along the banks.",
+    "select": {
+      "name": "regions_unexplored:tropical_river"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtru:palm": 1,
+          "dtru:short_palm": 1
+        }
+      },
+      "density": [
+        1.0
+      ],
+      "chance": 0.1
+    }
+  },
+  {
     "__comment": "Regions Unexplored puts palms on vanilla beaches; Dynamic Trees leaves beaches empty.",
     "select": {
       "name": "minecraft:beach"
