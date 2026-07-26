@@ -9,14 +9,11 @@ import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.client.resources.model.ResolvableModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 
 /**
  * Giant bamboo culms, with their own UV mapping and an optional foliage layer.
  */
-@OnlyIn(Dist.CLIENT)
 public record UnbakedBambooBranchModel(Identifier barkTexture, Identifier ringsTexture,
                                        Identifier leavesTexture) implements CustomUnbakedBlockStateModel {
 

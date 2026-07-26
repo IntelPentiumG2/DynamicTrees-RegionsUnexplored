@@ -12,8 +12,6 @@ import net.minecraft.client.resources.model.cuboid.FaceBakery;
 import net.minecraft.client.resources.model.geometry.QuadCollection;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Vector3f;
 
 import java.util.Map;
@@ -23,7 +21,6 @@ import java.util.Map;
  * bamboo log texture, so they map UVs differently from Dynamic Trees' branches and cannot simply
  * inherit that geometry.
  */
-@OnlyIn(Dist.CLIENT)
 public final class BambooModelParts {
 
     private BambooModelParts() {

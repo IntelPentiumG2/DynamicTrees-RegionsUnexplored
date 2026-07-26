@@ -36,11 +36,11 @@
     }
   },
   {
-    "__comment": "Saguaros reach the badlands the same way, and are a Dynamic Trees Plus cactus.",
+    "__comment": "Saguaros reach the badlands the same way. Their feature is configured with RUTreeConfiguration, so dtru:tree catches them - not dynamictreesplus:cactus, which matches on the vanilla cactus block.",
     "only_if_loaded": "dynamictreesplus",
     "select": { "names": [ "minecraft:(badlands|wooded_badlands)" ] },
     "cancellers": {
-      "types": ["dynamictreesplus:cactus", "dtru:tree_2"],
+      "types": ["dtru:tree", "dtru:tree_2"],
       "namespaces": ["regions_unexplored"]
     }
   },

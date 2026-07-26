@@ -15,8 +15,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
@@ -33,7 +31,6 @@ import java.util.Map;
  * <p>Only the trunk geometry is duplicated here, because Dynamic Trees keeps it private; the core,
  * sleeve and root shapes are inherited so their coordinates stay in one place.</p>
  */
-@OnlyIn(Dist.CLIENT)
 public final class EucalyptusModelParts {
 
     /** Tint index of the overlay layer, matching the position of the tint source registered for the block. */

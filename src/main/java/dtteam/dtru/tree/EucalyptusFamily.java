@@ -10,8 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.regions_unexplored.config.RUConfigHandler;
 import net.regions_unexplored.config.state.client.RUClientConfig;
 
@@ -71,7 +69,6 @@ public class EucalyptusFamily extends Family {
         return generators;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public int branchColorMultiplier(BlockState state, BlockAndTintGetter level, BlockPos pos) {
         // Regions Unexplored 0.7.0 dropped the ConfigValue-based client config; the values now live
         // on a plain codec-backed object held by RUConfigHandler.

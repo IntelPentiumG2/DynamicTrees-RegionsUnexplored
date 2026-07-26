@@ -16,8 +16,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 
 import java.util.List;
@@ -26,7 +24,6 @@ import java.util.List;
  * A regular branch with foliage added to culms that carry it. Bamboo never grows past radius 4, so
  * anything wider is left unrendered rather than falling back to the thick trunk shape.
  */
-@OnlyIn(Dist.CLIENT)
 public record BambooBranchBlockStateModel(
         BranchBlockStateModel branch,
         BranchModelPart leaves

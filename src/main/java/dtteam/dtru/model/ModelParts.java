@@ -8,8 +8,6 @@ import net.minecraft.client.resources.model.cuboid.CuboidModelElement;
 import net.minecraft.client.resources.model.geometry.QuadCollection;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -20,7 +18,6 @@ import java.util.function.Function;
  * <p>Dynamic Trees keeps the equivalent helpers private, so they are mirrored here rather than
  * reimplemented differently.</p>
  */
-@OnlyIn(Dist.CLIENT)
 public final class ModelParts {
 
     private ModelParts() {

@@ -11,14 +11,11 @@ import net.minecraft.client.resources.model.ResolvableModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 
 /**
  * Eucalyptus surface roots, carrying the same tinted overlay layer as the branches.
  */
-@OnlyIn(Dist.CLIENT)
 public record UnbakedEucalyptusSurfaceRootModel(Identifier barkTexture,
                                                 Identifier overlayTexture) implements CustomUnbakedBlockStateModel {
 

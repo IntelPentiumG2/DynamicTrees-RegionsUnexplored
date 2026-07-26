@@ -11,8 +11,6 @@ import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.client.resources.model.ResolvableModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 
 import java.util.Optional;
@@ -23,7 +21,6 @@ import java.util.Optional;
  * <p>Replaces the model loader and geometry pair used before 26.1: block state definitions now name
  * the model type directly, so a codec over the textures is all that is needed.</p>
  */
-@OnlyIn(Dist.CLIENT)
 public record UnbakedEucalyptusBranchModel(Identifier barkTexture, Identifier ringsTexture,
                                            Identifier overlayTexture,
                                            Optional<Family> family) implements CustomUnbakedBlockStateModel {

@@ -12,7 +12,7 @@ import com.dtteam.dynamictrees.systems.genfeature.GenFeature;
 import com.dtteam.dynamictrees.systems.growthlogic.GrowthLogicKit;
 import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
-import com.dtteam.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
+import dtteam.dtru.worldgen.LithostitchedTreeFeatureCanceller;
 import dtteam.dtru.DynamicTreesRU;
 import dtteam.dtru.cell.DTRUCellKits;
 import dtteam.dtru.genfeature.DTRUGenFeatures;
@@ -99,10 +99,10 @@ public class DTRURegistries {
         event.registerType(DynamicTreesRU.location("brimwood"), BrimwoodFamily.TYPE);
     }
 
-    public static final FeatureCanceller RU_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesRU.location("tree"), RUTreeConfiguration.class);
-    public static final FeatureCanceller RU_TREE2_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesRU.location("tree_2"), NoneFeatureConfiguration.class){
+    public static final FeatureCanceller RU_TREE_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("tree"), RUTreeConfiguration.class);
+    public static final FeatureCanceller RU_TREE2_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("tree_2"), NoneFeatureConfiguration.class){
         @Override
-        public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
+        protected boolean matches(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
             final Feature<?> featureConfig = configuredFeature.feature();
             return featureConfig instanceof LargeJoshuaTreeFeature ||
                     featureConfig instanceof MediumJoshuaTreeFeature ||
@@ -112,22 +112,22 @@ public class DTRURegistries {
                     featureConfig instanceof TallBrimWillowFeature;
         }
     };
-    public static final FeatureCanceller RU_MUSHROOM_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesRU.location("mushroom"), GiantBioshroomConfiguration.class);
-    public static final FeatureCanceller RU_MUSHROOM2_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesRU.location("mushroom_2"), NoneFeatureConfiguration.class){
+    public static final FeatureCanceller RU_MUSHROOM_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("mushroom"), GiantBioshroomConfiguration.class);
+    public static final FeatureCanceller RU_MUSHROOM2_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("mushroom_2"), NoneFeatureConfiguration.class){
         @Override
-        public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
+        protected boolean matches(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
             final Feature<?> featureConfig = configuredFeature.feature();
             return featureConfig instanceof YellowBioshroomShrubFeature ||
                     featureConfig instanceof CobaltShrubFeature ||
                     configuredFeature.config() instanceof HugeMushroomFeatureConfiguration;
         }
     };
-    public static final FeatureCanceller TREE_NO_SHROOMS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesRU.location("tree_no_shrooms"), NoneFeatureConfiguration.class){
+    public static final FeatureCanceller TREE_NO_SHROOMS_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("tree_no_shrooms"), NoneFeatureConfiguration.class){
         private boolean isConfigClass (FeatureConfiguration config){
             return config instanceof TreeConfiguration || config instanceof RUTreeConfiguration;
         }
         @Override
-        public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
+        protected boolean matches(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
             final FeatureConfiguration featureConfig = configuredFeature.config();
 
             if (isConfigClass(featureConfig)) {

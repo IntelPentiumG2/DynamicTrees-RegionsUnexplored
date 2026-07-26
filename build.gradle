@@ -116,6 +116,9 @@ dependencies {
         transitive = false
     }
     implementation "maven.modrinth:regions-unexplored:${regions_unexplored_version_id}"
+    // Regions Unexplored routes most of its trees through Lithostitched selector features, which
+    // have to be unwrapped before they can be cancelled; see LithostitchedTreeFeatureCanceller.
+    compileOnly "maven.modrinth:lithostitched:${lithostitched_version_id}"
     runtimeOnly "maven.modrinth:lithostitched:${lithostitched_version_id}"
 }
 
