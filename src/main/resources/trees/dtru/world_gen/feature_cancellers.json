@@ -28,6 +28,25 @@
 
 
   {
+    "__comment": "Regions Unexplored 0.7.0 injects its own trees into vanilla biomes through Lithostitched: palms on beaches, giant bamboo in jungles, willows in swamps. Those biomes are matched by none of the rules above, so their trees stayed static.",
+    "select": { "names": [ "minecraft:(beach|jungle|bamboo_jungle|swamp)" ] },
+    "cancellers": {
+      "types": ["tree", "dtru:tree", "dtru:tree_2"],
+      "namespaces": ["regions_unexplored"]
+    }
+  },
+  {
+    "__comment": "Saguaros reach the badlands the same way, and are a Dynamic Trees Plus cactus.",
+    "only_if_loaded": "dynamictreesplus",
+    "select": { "names": [ "minecraft:(badlands|wooded_badlands)" ] },
+    "cancellers": {
+      "types": ["dynamictreesplus:cactus", "dtru:tree_2"],
+      "namespaces": ["regions_unexplored"]
+    }
+  },
+
+
+  {
     "only_if_loaded": "dynamictreesplus",
     "select": { "names": [ "regions_unexplored:.*", "!regions_unexplored:alpha_grove" ], "tag": [ "!#minecraft:is_nether" ] },
     "cancellers": {

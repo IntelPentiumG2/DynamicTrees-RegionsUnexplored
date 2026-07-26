@@ -1,4 +1,4 @@
-// 26.1.2	2026-07-26T01:26:00.280546406	Model Definitions - dtru
+// 26.1.2	2026-07-26T02:00:09.801244886	Model Definitions - dtru
 2606791521eac27fa77ebbeeea442b8073802a51 assets/dtru/blockstates/acacia_twiglet_leaves.json
 7d82efc23ff7964dd623ed3a204d886223c73fde assets/dtru/blockstates/ashen_branch.json
 ab18794f7d55c70794422a30794d1894b64fd5b5 assets/dtru/blockstates/ashen_leaves.json
@@ -51,7 +51,7 @@ d127a7f2b5a786c759bc0a203186b274c08cea55 assets/dtru/blockstates/eucalyptus_sapl
 7e9eb53405514322efb0d07e1aa469ae8e058106 assets/dtru/blockstates/green_bioshroom_root.json
 09d7522dc4dc39d151bf6f555de9ade9a81c38aa assets/dtru/blockstates/green_bioshroom_sapling.json
 f29062bda0a9ff2a0a74d2415e2d5f11edb53e51 assets/dtru/blockstates/joshua_branch.json
-bc48e8891cd43e60cb8a0d932a92b15afd6482cb assets/dtru/blockstates/joshua_leaves.json
+929a340c51ca4bb0a656e99282f7870f2c099a20 assets/dtru/blockstates/joshua_leaves.json
 cf3081bc02c122d9670785be37b0fc9cae7b71d7 assets/dtru/blockstates/joshua_sapling.json
 9ba32f4a494011972e9d0e05f0836a400f3a113d assets/dtru/blockstates/kapok_branch.json
 7f398c7137f435cfe73b402bcb30b20de7272120 assets/dtru/blockstates/kapok_leaves.json
@@ -84,7 +84,7 @@ bb55f5ed209ebb6b861e08feb9d7bff52ea8e4d6 assets/dtru/blockstates/oak_poplar_sapl
 14ed930efca6fdc525361e524346e264f0b0092d assets/dtru/blockstates/orange_maple_leaves.json
 6180064b6afcf96a718b85d94b940db755395da5 assets/dtru/blockstates/orange_maple_sapling.json
 14554231186a7443cc24548137ccb028d4b22296 assets/dtru/blockstates/palm_branch.json
-795fa0512fa02770646697f7c3f050b6302785d1 assets/dtru/blockstates/palm_leaves.json
+a5823f479e91f0d7a7a6ff0eed239c66770d7d3c assets/dtru/blockstates/palm_leaves.json
 b68dfec8133f13b4534413b52c7213d5f2a11de9 assets/dtru/blockstates/palm_sapling.json
 8c66d58d7a865888782322e2e19796ad967ee0cd assets/dtru/blockstates/pine_branch.json
 ba08fc54535767adbd81b1a52435a97d54280daf assets/dtru/blockstates/pine_leaves.json
@@ -240,7 +240,6 @@ c8abdc28ba2efca3b8a1b4da59315ce9f80da5ff assets/dtru/items/socotra_seed.json
 c83bad3d450e97a9dbaf07053c971787bff0999f assets/dtru/items/willow_seed.json
 9360fff24eca8e95c6a5e4254a92e14cf8abe46d assets/dtru/items/yellow_bioshroom_branch.json
 659ea7ef799947d2b907c975efb2e122fddf2229 assets/dtru/items/yellow_bioshroom_seed.json
-4d11bafaa4acec2127d8d35c7bf17521058e71aa assets/dtru/models/block/joshua_leaves.json
 d32ffd2bff02e761e977cdfed61b4d89408f53b2 assets/dtru/models/block/mushroom/blue_bioshroom_cap.json
 771db15ffba0dd2ec074d2709a1ee6ca7625e8dc assets/dtru/models/block/mushroom/blue_bioshroom_cap_center_age0.json
 7ed4809e17b48daedfaf1eb00c219c88dc0d8dbb assets/dtru/models/block/mushroom/blue_bioshroom_cap_inside.json
@@ -259,7 +258,6 @@ e79e379a29f26f98a7d524a98aaacba3fd02a407 assets/dtru/models/block/mushroom/small
 e0e91d2dd9e41f6429d083700734423be90d72b2 assets/dtru/models/block/mushroom/yellow_bioshroom_cap.json
 4ae9edf3d67d25cee069a8cd8fc75843305d810d assets/dtru/models/block/mushroom/yellow_bioshroom_cap_center_age0.json
 c3390ebc44a0cb1c13559b2bad8ce4805d74b25b assets/dtru/models/block/mushroom/yellow_bioshroom_cap_inside.json
-9a71e32d01826f981dec2425e3c4ce9a602aa0c9 assets/dtru/models/block/palm_leaves.json
 9e1ebdaa552d779356c860a652afaf0818f0a512 assets/dtru/models/block/saplings/bamboo.json
 1de834d6c9dcc74f86e01857eccb92b82d298a1d assets/dtru/models/block/saplings/baobab.json
 b164be1fcfede78a61d64ff051d1db9dbbb4b256 assets/dtru/models/block/saplings/big_apple_oak.json
