@@ -21,16 +21,16 @@
     "dtru:mega_cypress_sapling",
     "dtru:mega_eucalyptus_sapling",
     "dtru:mega_mauve_sapling",
-    "dtru:mega_pine_sapling",
     "dtru:orange_maple_sapling",
     "dtru:palm_sapling",
-    "dtru:pine_sapling",
     "dtru:pink_magnolia_sapling",
     "dtru:red_maple_sapling",
     "dtru:redwood_sapling",
     "dtru:silver_birch_sapling",
     "dtru:socotra_sapling",
     "dtru:white_magnolia_sapling",
-    "dtru:willow_sapling"
+    "dtru:willow_sapling",
+    "dtru:pine_sapling",
+    "dtru:mega_pine_sapling"
   ]
 }
