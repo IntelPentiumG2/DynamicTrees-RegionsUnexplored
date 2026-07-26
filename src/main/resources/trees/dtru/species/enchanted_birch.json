@@ -15,10 +15,8 @@
     }
   },
   "leaves_properties": "dtru:enchanted_birch",
-  "environment_factors": {
-    "sparse": 0.8,
-    "dry": 0.5
-  },
+  "preferred_climate": "temperate",
+  "climate_tolerance": 0.5,
   "lang_overrides": {
     "seed": "Sky Wisteria Seed"
   },
