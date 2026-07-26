@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "regions_unexplored:block/blue_bioshroom_block_glowing",
+    "bottom": "regions_unexplored:block/glowing_blue_bioshroom_block",
     "side": "regions_unexplored:block/blue_bioshroom_block",
     "top": "regions_unexplored:block/blue_bioshroom_block"
   }

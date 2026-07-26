@@ -6,6 +6,6 @@
   "generate_face_models": true,
   "texture_overrides": {
     "outside_face": "regions_unexplored:block/pink_bioshroom_block",
-    "inside_face": "regions_unexplored:block/pink_bioshroom_block_glowing"
+    "inside_face": "regions_unexplored:block/glowing_pink_bioshroom_block"
   }
 }

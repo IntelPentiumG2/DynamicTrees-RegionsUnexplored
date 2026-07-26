@@ -15,11 +15,12 @@
     }
   },
   "leaves_properties": "dtru:enchanted_birch",
-  "environment_factors" : {
-    "sparse": 0.80,
-    "dry": 0.50
+  "environment_factors": {
+    "sparse": 0.8,
+    "dry": 0.5
   },
   "lang_overrides": {
-    "seed": "Enchanted Birch Catkin"
-  }
+    "seed": "Sky Wisteria Seed"
+  },
+  "primitive_sapling": "regions_unexplored:sky_wisteria_sapling"
 }

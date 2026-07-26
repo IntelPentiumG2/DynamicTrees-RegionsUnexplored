@@ -2,6 +2,7 @@
   "primitive_leaves": "regions_unexplored:orange_maple_leaves",
   "particle": "regions_unexplored:leaves/standard",
   "particle_chance": 0.025,
+  "particle_color": 16751925,
   "texture_overrides": {
     "leaves": "regions_unexplored:block/orange_maple_leaves"
   }

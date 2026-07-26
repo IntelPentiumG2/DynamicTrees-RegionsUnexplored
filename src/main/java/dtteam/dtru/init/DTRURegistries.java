@@ -123,37 +123,31 @@ public class DTRURegistries {
         }
     };
     public static final FeatureCanceller TREE_NO_SHROOMS_CANCELLER = new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("tree_no_shrooms"), NoneFeatureConfiguration.class){
-        private boolean isConfigClass (FeatureConfiguration config){
-            return config instanceof TreeConfiguration || config instanceof RUTreeConfiguration;
-        }
         @Override
         protected boolean matches(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
             final FeatureConfiguration featureConfig = configuredFeature.config();
-
-            if (isConfigClass(featureConfig)) {
-                // Regions Unexplored dropped its blackwood bioshroom decorator, so the exemption that
-                // used to keep those trees from being cancelled no longer has anything to match.
-                String nameSpace = "";
-                var firstFeature = configuredFeature.getSubFeatures().findFirst();
-                if (firstFeature.isEmpty()) return false;
-                final ConfiguredFeature<?, ?> nextConfiguredFeature = firstFeature.get().value();
-                final FeatureConfiguration nextFeatureConfig = nextConfiguredFeature.config();
-                final Identifier featureRegistryName = BuiltInRegistries.FEATURE.getKey(nextConfiguredFeature.feature());
-
-                if (featureRegistryName != null) {
-                    nameSpace = featureRegistryName.getNamespace();
-                }
-                return isConfigClass(nextFeatureConfig) && !nameSpace.isEmpty() &&
-                        featureCancellations.shouldCancelNamespace(nameSpace); // Removes any individual trees.
+            // Trees go, mushrooms and bioshrooms stay: their configurations are not tree ones.
+            if (!(featureConfig instanceof TreeConfiguration) && !(featureConfig instanceof RUTreeConfiguration)) {
+                return false;
             }
-
-            return false;
+            final Identifier featureRegistryName = BuiltInRegistries.FEATURE.getKey(configuredFeature.feature());
+            return featureRegistryName != null &&
+                    featureCancellations.shouldCancelNamespace(featureRegistryName.getNamespace());
         }
     };
+
+    /**
+     * Regions Unexplored converted several of its trees to plain {@code minecraft:tree} features.
+     * Dynamic Trees' own canceller for those cannot see inside Lithostitched selectors, so this one
+     * stands in for it wherever a Regions Unexplored biome group might hold one.
+     */
+    public static final FeatureCanceller RU_VANILLA_TREE_CANCELLER =
+            new LithostitchedTreeFeatureCanceller<>(DynamicTreesRU.location("vanilla_tree"), TreeConfiguration.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final RegistryEvent<FeatureCanceller> event) {
         if (!event.isEntryOfType(FeatureCanceller.class)) return;
-        event.getRegistry().registerAll(RU_TREE_CANCELLER, RU_TREE2_CANCELLER, RU_MUSHROOM_CANCELLER, RU_MUSHROOM2_CANCELLER, TREE_NO_SHROOMS_CANCELLER);
+        event.getRegistry().registerAll(RU_TREE_CANCELLER, RU_TREE2_CANCELLER, RU_MUSHROOM_CANCELLER,
+                RU_MUSHROOM2_CANCELLER, TREE_NO_SHROOMS_CANCELLER, RU_VANILLA_TREE_CANCELLER);
     }
 }
